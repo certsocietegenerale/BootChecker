@@ -75,3 +75,54 @@ After some checks, we noticed that event id’s 42 and 107 from Kernel-power sou
 As previously mentioned, the script will attempt to detect your main HDD/SSD during the first initialization. At that moment, the security check related to the **power cycle count S.M.A.R.T** data is only performed on the main HDD/SSD. If you have sensible data on a second HDD/SSD and someone extracts it with a duplication action, the script will not warn you about this.
 
 **The check for additional HDD/SSD will be added in the next update.**
+
+## 6) Annexes
+
+### a) First usage
+
+<p align="center">
+  <img src="https://github.com/certsocietegenerale/BootChecker/blob/master/images/1st_usage_1.png">
+</p>
+
+
+<p align="center">
+  <img src="https://github.com/certsocietegenerale/BootChecker/blob/master/images/1st_usage_2.png">
+</p>
+
+
+### b) Scheduled task setup
+
+
+<p align="center">
+  <img src="https://github.com/certsocietegenerale/BootChecker/blob/master/images/scheduled_task_1.png">
+</p>
+
+
+<p align="center">
+  <img src="https://github.com/certsocietegenerale/BootChecker/blob/master/images/scheduled_task_2.png">
+</p>
+
+
+<p align="center">
+  <img src="https://github.com/certsocietegenerale/BootChecker/blob/master/images/scheduled_task_3.png">
+</p>
+
+
+<p align="center">
+  <img src="https://github.com/certsocietegenerale/BootChecker/blob/master/images/scheduled_task_4.png">
+</p>
+
+
+
+`Arguments : -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\Bootchecker\bootchecker.ps1`
+
+
+
+<p align="center">
+  <img src="https://github.com/certsocietegenerale/BootChecker/blob/master/images/scheduled_task_5.png">
+</p>
+
+
+<p align="center">
+  <img src="https://github.com/certsocietegenerale/BootChecker/blob/master/images/scheduled_task_6.png">
+</p>
