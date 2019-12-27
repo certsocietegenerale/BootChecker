@@ -39,7 +39,9 @@ As described above, this script will compare the previous value of **power cycle
 
 If a difference is greater than one is detected, a warning popup will be displayed.
 
- 
+<p align="center">
+  <img src="https://github.com/certsocietegenerale/BootChecker/blob/master/images/warningPopUp.png">
+</p>
 
 The script fills out a log file each time it runs. The log file contains basic data like the result of the value comparison and the value of the previous and current **power cycle count S.M.A.R.T counter**. Each line of log is timestamped.
 
