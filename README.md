@@ -64,7 +64,9 @@ If you leave your computer in the sleep/hibernation mode, sometimes the Windows 
 
 After some checks, we noticed that event id’s 42 and 107 from Kernel-power source are present when this kind of event occurs. 
 
- 
+<p align="center">
+  <img src="https://github.com/certsocietegenerale/BootChecker/blob/master/images/event-log-example.png">
+</p>
 
 **In the next update the script will check if event-id 42 or 107 are present to try to detect false positives and it will ask you if your computer has been left in sleep/hibernation state.**
 
