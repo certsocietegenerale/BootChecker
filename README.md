@@ -18,14 +18,14 @@ If the result is a difference of one everything is good. **If you have a differe
 ## 2)	Installation
 
 We tried to make the installation as easy as possible.
-a)	Create a directory where you want to store the PowerShell script.
-b)	Copy/paste the PowerShell script to this newly created directory.
-c)	Launch a PowerShell shell with the administrator privileges and move inside the created directory.
-d)	The script will launch some check and will ask you if it is your first-time usage - type Y.
-e)	If the script detects more than one HDD/SDD, it will try to detect your main HDD/SSD and will ask you if it’s OK; otherwise you can choose your main disk yourself.
-f)	At the first-time usage, the script will create:
-i)	The data it needs inside the registry.
-ii)	The **Logs** directory at the root of the current directory (where the script is stored).
+1.	Create a directory where you want to store the PowerShell script.
+2.	Copy/paste the PowerShell script to this newly created directory.
+3.	Launch a PowerShell shell with the administrator privileges and move inside the created directory.
+4.	The script will launch some check and will ask you if it is your first-time usage - type Y.
+5.	If the script detects more than one HDD/SDD, it will try to detect your main HDD/SSD and will ask you if it’s OK; otherwise you can choose your main disk yourself.
+6.	At the first-time usage, the script will create:
+    *	The data it needs inside the registry.
+    *	The **Logs** directory at the root of the current directory (where the script is stored).
 
 And that’s all for the script. Now each time you will launch it, it will check if there is a difference in the power cycle count S.M.A.R.T data.
 
