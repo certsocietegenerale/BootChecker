@@ -12,6 +12,32 @@
 # else maybe a pb...
 ##
 
+$logo = @"
+  ____              _    _____ _               _             
+ |  _ \            | |  / ____| |             | |            
+ | |_) | ___   ___ | |_| |    | |__   ___  ___| | _____ _ __ 
+ |  _ < / _ \ / _ \| __| |    | '_ \ / _ \/ __| |/ / _ \ '__|
+ | |_) | (_) | (_) | |_| |____| | | |  __/ (__|   <  __/ |   
+ |____/ \___/ \___/ \__|\_____|_| |_|\___|\___|_|\_\___|_|   
+                                                             
+                                                             
+"@
+
+function CheckForAdminConsole
+{
+	Write-Host "Checking for elevated permissions..."
+
+	if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) 
+	{
+		Write-Warning "Insufficient permissions to run this script. Open the PowerShell console as an administrator and run this script again."
+		Break
+	}
+	else 
+	{
+		Write-Host "Code is running as administrator. Go on executing the script..."
+	}
+}
+
 function getPowerCycleCountSmartData
 {
 	$driveletter = 'C'
@@ -20,7 +46,15 @@ function getPowerCycleCountSmartData
 
 	$diskid = $fulldiskid.Matches.Groups[2].Value
 
-	$rawsmartdata = (Get-WmiObject -Namespace 'Root\WMI' -Class 'MSStorageDriver_ATAPISMartData' | Where-Object 'InstanceName' -like "*$diskid*" | Select-Object -ExpandProperty 'VendorSpecific')
+	try
+	{
+		$rawsmartdata = (Get-WmiObject -Namespace 'Root\WMI' -Class 'MSStorageDriver_ATAPISMartData' -ErrorAction Stop | Where-Object 'InstanceName' -like "*$diskid*" | Select-Object -ExpandProperty 'VendorSpecific')
+	}
+	catch
+	{
+		Write-Output "[!] The Get-WmiObject on class 'MSStorageDriver_ATAPISMartData' threw an exception: Your HDD/SSD may doesn’t support S.M.A.R.T."
+		Exit
+	}
 
 	log -Message "Get Power Cycle Count Smart Data info"
 	
@@ -164,7 +198,7 @@ function initRegistry($HddName, $PCcounter)
 	}
 	Else
 	{
-		New-Item -Path 'HKLM:\SOFTWARE\' -Name 'BootCounter' �Force
+		New-Item -Path 'HKLM:\SOFTWARE\' -Name 'BootCounter' –Force
 				
 		Set-ItemProperty -Path 'HKLM:\SOFTWARE\BootCounter' -Name $HddName -Value $PCcounter		
 	}
@@ -245,6 +279,10 @@ function initTheMainHdd($hdd)
 			}
 		}
 }
+
+Write-Host $logo
+
+CheckForAdminConsole
 
 $script:sname = $MyInvocation.MyCommand.Name
 
